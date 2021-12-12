@@ -1,10 +1,13 @@
 import myAlert from './alert.js'
-import {$} from './utils.js'
-function click(){
+import {$$} from './utils.js'
+function click(e,type){
     myAlert({
         content:"hello",
-        type:'success',
-        // duration:3
+        type:type,
+        duration:3
     })
 }
-$('button').addEventListener('click',click)
+$$('button').forEach(btn=>{
+    let name = btn.className
+    btn.addEventListener('click',(e)=>{click(e,name)})
+})
